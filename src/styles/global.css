@@ -103,7 +103,7 @@ summary { cursor: pointer; color: var(--navy); font-family: Manrope, sans-serif;
 
 @media (max-width: 760px) {
   body { padding-bottom: 70px; }
-  .container { width: min(100% - 32px, 1120px); }
+  .container { width: min(calc(100% - 32px), 1120px); }
   .site-header nav, .header-cta { display: none; }
   .nav-wrap { height: 64px; }
   .services-grid, .feature, .about-preview, .about-detail, .footer-grid { grid-template-columns: 1fr; }
