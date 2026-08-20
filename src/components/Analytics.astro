@@ -1,0 +1,13 @@
+---
+import { brand } from '../config/brand';
+const shouldLoad = brand.gaMeasurementId && import.meta.env.PROD;
+---
+{shouldLoad && <>
+  <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${brand.gaMeasurementId}`}></script>
+  <script is:inline define:vars={{ measurementId: brand.gaMeasurementId }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', measurementId, { anonymize_ip: true });
+  </script>
+</>}

@@ -1,0 +1,9 @@
+---
+import { siteUrl } from '../config/brand';
+interface Props { items: { label: string; href?: string }[] }
+const { items } = Astro.props;
+const all = [{ label: 'Home', href: '/' }, ...items];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: all.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: item.href ? new URL(item.href, siteUrl).href : undefined })) };
+---
+<nav class="breadcrumbs container" aria-label="Breadcrumb"><ol>{all.map((item, index) => <li>{item.href && index < all.length - 1 ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</li>)}</ol></nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

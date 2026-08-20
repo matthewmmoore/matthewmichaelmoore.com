@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { caseStudies } from '../../data/case-studies';
+export function getStaticPaths() { return caseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } })); }
+const { study } = Astro.props;
+---
+<BaseLayout title={`${study.title} | Work | Matthew Moore`} description={study.summary} type="article"><Breadcrumbs items={[{label:'Work',href:'/work/'},{label:study.title}]} /><section class="page-hero container"><p class="eyebrow">Case study</p><h1>{study.title}</h1><p>{study.summary}</p></section><article class="section alt"><div class="container case-detail prose"><h2>The context</h2><p>{study.challenge}</p><h2>The system</h2><p>{study.work}</p><h2>Included areas</h2><ul class="scope">{study.scope.map((item) => <li>{item}</li>)}</ul><p style="margin-top:2rem"><a class="button" href="/contact/">Discuss a Project</a></p></div></article><section class="section"><div class="container prose"><p><a href="/work/">View all work</a> or explore <a href="/services/">services</a> for similar operational challenges.</p></div></section></BaseLayout>

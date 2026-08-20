@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../config/brand';
+import { services } from '../data/services';
+import { caseStudies } from '../data/case-studies';
+import { faqs } from '../data/faqs';
+const featured = caseStudies[0];
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
+---
+<BaseLayout title={`${brand.displayName} | ${brand.title}`} description="Practical software development and business operations consulting for businesses that need clearer workflows, data, and systems.">
+  <section class="hero"><div class="container hero-copy"><p class="eyebrow">Software & operations consulting</p><h1>Software built around how your business actually works.</h1><p class="lead">I develop practical software and operational solutions that help businesses organize information, improve workflows, and make better decisions.</p><div class="actions"><a class="button" href="/contact/">Discuss a Project</a><a class="button secondary" href="/work/">View My Work</a></div><p class="promise">You’ll receive a response {brand.responseTime}.</p></div></section>
+  <section class="section"><div class="container"><div class="section-head"><div><p class="eyebrow">Services</p><h2>Useful systems, grounded in the work.</h2></div><p>From a focused integration to a more complete internal tool, I combine software development with an understanding of real business operations.</p></div><div class="grid services-grid">{services.slice(0, 3).map((service) => <article class="card"><h3>{service.title}</h3><p>{service.text}</p><p><a href="/services/">Explore services <span aria-hidden="true">→</span></a></p></article>)}</div></div></section>
+  <section class="section alt"><div class="container"><article class="feature"><div class="feature-copy"><p class="eyebrow" style="color:#8ab5ff">Featured work</p><h2>{featured.title}</h2><p>{featured.summary}</p><a class="button" href={`/work/${featured.slug}/`}>Read the project overview</a></div><div class="feature-mark"><img src="/icon.png" alt="" width="320" height="132" /></div></article></div></section>
+  <section class="section"><div class="container about-preview"><div><p class="eyebrow">About</p><h2>A technical perspective shaped by operational reality.</h2></div><div class="about-panel"><p>I’m a Computer Science and Mathematics student at the University of Wisconsin–Madison. I build software and improve workflows with attention to the people and decisions the system needs to support.</p><a href="/about/">More about my approach <span aria-hidden="true">→</span></a></div></div></section>
+  <section class="section alt"><div class="container faq"><p class="eyebrow">Questions</p><h2>Frequently asked questions</h2><div style="margin-top:1.5rem">{faqs.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div><p style="margin-top:1.5rem">Want to talk through a specific need? <a href="/contact/">Get in touch</a>.</p></div><script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} /></section>
+  <section class="section contact-band"><div class="container"><p class="eyebrow" style="color:#8ab5ff">Start a conversation</p><h2>Have an operational problem worth solving?</h2><p>Tell me what you’re working on, and I’ll reply {brand.responseTime}.</p><a class="button" href="/contact/">Discuss a Project</a></div></section>
+</BaseLayout>

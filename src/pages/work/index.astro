@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { caseStudies } from '../../data/case-studies';
+---
+<BaseLayout title="Work | Matthew Moore" description="Project overviews showing practical software and operations systems designed by Matthew Moore."><Breadcrumbs items={[{label:'Work'}]} /><section class="page-hero container"><p class="eyebrow">Work</p><h1>Practical systems for real operations.</h1><p>These project overviews focus on the problem, the system, and the work involved—without overstating outcomes or revealing client information.</p></section><section class="section alt"><div class="container grid">{caseStudies.map((study) => <article class="card"><p class="eyebrow">Case study</p><h2>{study.title}</h2><p>{study.summary}</p><p><a href={`/work/${study.slug}/`}>Read project overview <span aria-hidden="true">→</span></a></p></article>)}</div></section><section class="section"><div class="container prose"><p>Planning a system of your own? <a href="/contact/">Discuss a project</a> or learn about the <a href="/services/">services I provide</a>.</p></div></section></BaseLayout>

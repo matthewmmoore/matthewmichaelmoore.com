@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { services } from '../data/services';
+---
+<BaseLayout title="Services | Matthew Moore" description="Custom software, workflow automation, reporting, integrations, and operational improvement for practical business needs."><Breadcrumbs items={[{label:'Services'}]} /><section class="page-hero container"><p class="eyebrow">Services</p><h1>Software and operations support that fits the work.</h1><p>I help turn disconnected information and cumbersome processes into systems that are easier to run, understand, and improve.</p></section><section class="section alt"><div class="container grid services-grid">{services.map((service) => <article class="card"><h2 style="font-size:1.4rem">{service.title}</h2><p>{service.text}</p><p><a href="/contact/">Discuss this service <span aria-hidden="true">→</span></a></p></article>)}</div></section><section class="section"><div class="container prose"><h2>Start with the current operation</h2><p>The best next step is often understanding what already works, where information gets stuck, and what level of change will be genuinely useful. <a href="/contact/">Contact me</a> to discuss your situation, or see an example in <a href="/work/">my work</a>.</p></div></section></BaseLayout>

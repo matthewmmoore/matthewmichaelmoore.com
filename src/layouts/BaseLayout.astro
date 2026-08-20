@@ -1,0 +1,17 @@
+---
+import '../styles/global.css';
+import { brand, siteUrl } from '../config/brand';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCta from '../components/MobileCta.astro';
+import Analytics from '../components/Analytics.astro';
+interface Props { title: string; description: string; noindex?: boolean; breadcrumbs?: { label: string; href?: string }[]; type?: 'website' | 'article' }
+const { title, description, noindex = false, type = 'website' } = Astro.props;
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Person', name: brand.displayName, jobTitle: brand.title, email: brand.email, url: siteUrl, address: { '@type': 'PostalAddress', addressRegion: brand.location, addressCountry: 'US' } },
+  { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: brand.legalName || brand.displayName, description: brand.title, url: siteUrl, email: brand.email, areaServed: brand.serviceArea },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: brand.displayName, url: siteUrl }
+];
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content={brand.primaryColor} /><link rel="icon" href="/favicon.ico" sizes="any" /><link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" /><Seo title={title} description={description} noindex={noindex} type={type} /><script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /><Analytics /></head><body><a class="skip-link" href="#main">Skip to content</a><Header /><main id="main"><slot /></main><Footer /><MobileCta /></body></html>
