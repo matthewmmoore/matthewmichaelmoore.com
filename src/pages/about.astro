@@ -2,4 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 ---
-<BaseLayout title="About | Matthew Moore" description="Learn about Matthew Moore, a University of Wisconsin–Madison student focused on software development and business operations."><Breadcrumbs items={[{label:'About'}]} /><section class="page-hero container"><p class="eyebrow">About</p><h1>Building software with an eye on the operation around it.</h1></section><section class="section alt"><div class="container prose"><p>I am a Computer Science and Mathematics student at the University of Wisconsin–Madison who develops software and improves business operations. I’m interested in practical problem-solving: understanding the work people need to do, organizing the information they depend on, and building tools that make the process more workable.</p><p>My work brings together software development, data and reporting, and workflow improvement. Rather than treating technology as separate from the business, I focus on how a system fits into real decisions and day-to-day operations.</p><h2>A practical approach</h2><p>Whether the need is a new internal tool, a clearer reporting process, or a better connection between existing systems, I start with the workflow. You can <a href="/services/">review my services</a>, see a <a href="/work/">project overview</a>, or <a href="/contact/">start a conversation</a>.</p></div></section></BaseLayout>
+<BaseLayout title="About | Matthew Moore" description="Learn about Matthew Moore, a University of Wisconsin–Madison student focused on software development and business operations.">
+  <Breadcrumbs items={[{label:'About'}]} />
+  <section class="page-hero container">
+    <p class="eyebrow">About</p>
+    <h1>Building software with an eye on the operation around it.</h1>
+  </section>
+  <section class="section alt">
+    <div class="container about-detail">
+      <img class="headshot" src="/matthew-moore-headshot.png" alt="Matthew Moore wearing a navy jacket and light blue shirt" width="1022" height="1008" />
+      <div class="prose">
+        <p>I am a Computer Science and Mathematics student at the University of Wisconsin–Madison who develops software and improves business operations. I’m interested in practical problem-solving: understanding the work people need to do, organizing the information they depend on, and building tools that make the process more workable.</p>
+        <p>My work brings together software development, data and reporting, and workflow improvement. Rather than treating technology as separate from the business, I focus on how a system fits into real decisions and day-to-day operations.</p>
+        <h2>A practical approach</h2>
+        <p>Whether the need is a new internal tool, a clearer reporting process, or a better connection between existing systems, I start with the workflow. You can <a href="/services/">review my services</a>, see a <a href="/work/">project overview</a>, or <a href="/contact/">start a conversation</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
